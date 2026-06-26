@@ -41,4 +41,13 @@ class MaterialController extends Controller
         'material' => $material->load('categoria')
     ]);
 }
+public function index()
+{
+    $materiales = Material::with('categoria')->get();
+
+    return response()->json([
+        'message' => 'Lista de materiales obtenida correctamente',
+        'materiales' => $materiales
+    ]);
+}
 }
